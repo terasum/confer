@@ -4,11 +4,13 @@ import (
 "github.com/spf13/cobra"
 "fmt"
 "github.com/terasum/confer/conf"
-"strings"
+//"strings"
+	"encoding/json"
 )
-
+//var vartype string
 func init() {
 	RootCmd.AddCommand(readCmd)
+	//genprivCmd.Flags().StringVarP(&vartype, "vartype", "t", "string", "specific the value type: string, int or bool")
 }
 
 var readCmd = &cobra.Command{
@@ -33,12 +35,18 @@ var readCmd = &cobra.Command{
 			fmt.Println(err)
 			return
 		}
-		result := conf.GetString(args[1])
-		result = strings.TrimSpace(result)
-		if result == ""{
-			fmt.Println("null")
+		result := conf.Get(args[1])
+		//result = strings.TrimSpace(result)
+		//if result == ""{
+		//	fmt.Println("null")
+		//	return
+		//}
+		b,err := json.Marshal(result)
+		if err != nil{
+			fmt.Println("read err")
 			return
 		}
-		fmt.Println(result)
+
+		fmt.Printf("%v\n",string(b))
 	},
 }

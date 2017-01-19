@@ -71,6 +71,10 @@ var genprivCmd = &cobra.Command{
 		case "string":{
 			originViper.Set(targetKey,targetValue)
 		}
+		case "map":{
+
+		}
+
 		default:{
 			fmt.Printf("the type: %s you specific is wrong!\n",vartype)
 			fmt.Println("Abort")

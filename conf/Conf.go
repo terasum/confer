@@ -32,3 +32,6 @@ func (confer *Confer)GetString(key string)string{
 func (confer *Confer)GetBool(key string) bool{
 	return confer.viper.GetBool(key)
 }
+func(confer *Confer)Get(key string)interface{}{
+	return confer.viper.Get(key)
+}
