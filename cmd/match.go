@@ -4,18 +4,13 @@ import (
 	"github.com/spf13/cobra"
 	"fmt"
 	"github.com/terasum/confer/conf"
-	//"strings"
-	//"encoding/json"
-	//"reflect"
 	"strings"
 	"encoding/json"
 	"reflect"
 	"strconv"
 )
-//var vartype string
 func init() {
 	RootCmd.AddCommand(matchCmd)
-	//genprivCmd.Flags().StringVarP(&vartype, "vartype", "t", "string", "specific the value type: string, int or bool")
 }
 
 var matchCmd = &cobra.Command{
