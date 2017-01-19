@@ -11,15 +11,14 @@ import (
 var(
 	isConfirm bool
 	vartype string
-
 )
 func init() {
-	RootCmd.AddCommand(genprivCmd)
-	genprivCmd.Flags().BoolVarP(&isConfirm, "confirm", "y", false, "confirm replace or not")
-	genprivCmd.Flags().StringVarP(&vartype, "vartype", "t", "string", "specific the value type: string, int or bool")
+	RootCmd.AddCommand(writeCmd)
+	writeCmd.Flags().BoolVarP(&isConfirm, "confirm", "y", false, "confirm replace or not")
+	writeCmd.Flags().StringVarP(&vartype, "vartype", "t", "string", "specific the value type: string, int or bool")
 }
 
-var genprivCmd = &cobra.Command{
+var writeCmd = &cobra.Command{
 	Use:   "write",
 	Short: "write a config value into target config file",
 	Long:  `specific oigin config file and target config file path, then specific the key and value`,
@@ -93,6 +92,7 @@ var genprivCmd = &cobra.Command{
 
 			if yesflag == "yes" || yesflag == "Yes" || yesflag == "YES"{
 				err = originViper.WriteConfigAs(targetConfigFilePath)
+
 			}else{
 				fmt.Println("Abort")
 				return
